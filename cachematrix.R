@@ -16,7 +16,7 @@
 makeMatrix<-function (mtx=matrix()){
       inv<-NULL
       set<-function (y){
-            mtx<<-y
+            mtx<<-y      #sets the values of mtx and inv from outside the "set" function environment
             inv<<-NULL
       }
       get<-function() mtx
