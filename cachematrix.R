@@ -1,15 +1,15 @@
-# Usage example: 
-# call makeMatrix and cachesolve once they are placed in the working
-# environment.
-# To Call: 
-# Create a matrix, p.e Variable1 is a non-singular square matrix
+# The following two functions help saving computation time by checking in memory for an existing result before doing additional calculations.
+
+# To use these funcitons, call makeMatrix and cachesolve to the working environment. 
+# Create a square matrix (requirement for the matrix to be "invertible"), p.e Variable1 is a non-singular square matrix
 # >dummyVar1<-makeMatrix(Variable1)
 # >dummyVar2<-cachesolve(dummyVar1)
 # >print (dummyVar2)
 # any time the cachesolve(dummyVar2) is called after the first time, 
-# the function will retrieve the value stored in memory instead of 
+# the function retrieves the value stored in memory instead of 
 # recalculating the inverse of Variable1
-
+#
+#
 # This first function creates the "decision list", when the second function runs 
 # the elements in this list will tell whether the inverse has been calculated or not
 
@@ -26,12 +26,8 @@ makeMatrix<-function (mtx=matrix()){
 }
 #
 # checking for the inverse matrix in memory / calculating the inverse 
-# the function calculates the inverse depending on the contents of the lst created by
-# makeMatrix
-# if the element of the list called "setinverse" is not null (menaing it contains the 
-# result of calculating the inverse using "solve", the "cachesolve" function knows that
-# the calculation has been performed and just retrieves the info stored in that element of
-# the list, otherwise it calculates the inverse caling the function "solve"
+# the function calculates the inverse depending on the contents of the list created by makeMatrix
+# if the element of the list called "setinverse" is not null (meaning it contains the result of calculating the inverse using "solve", the "cachesolve" function knows that the calculation has been performed and just retrieves the info stored in that element of the list, otherwise it calculates the inverse caling the function "solve"
 #
 cachesolve<-function (mtx, ...){
       inv<-mtx$getinverse()
